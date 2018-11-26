@@ -152,11 +152,22 @@ $(document).ready(function(){
     })
     function loadCocktailMenu(){
         $('#display').html('');
-        $('#display').append(`<div class='square' id='searchByName'>Search by name</div>`);
-        $('#display').append(`<div class='square' id='searchByAlcohol'>Search by alcohol</div>`);
-        $('#display').append(`<div class='square' id='searchByGlass'>Search by glass</div>`);
-        $('#display').append(`<div class='square' id='searchByCategory'>Search by categoty</div>`);
-        $('#display').append(`<div class='square' id='getRandomCocktail'>Get 5 random Cocktails</div>`);
+        $('#display').append(`
+        <div class="card-group">
+        <div class="card">
+          <img class="card-img-top" src="images/Brunch & Specials-4.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Food Menu</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="images/Monnie Burkes-8.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Cocktail Menu</h5>
+          </div>
+        </div>
+    </div>
+    `);
     }
     function random(){
         var call='https://www.thecocktaildb.com/api/json/v1/1/random.php';
