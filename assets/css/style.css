@@ -1,7 +1,18 @@
-.square{
-    width:200px;
-    height:200px;
-    background-color: aquamarine;
-    float:left;
-    margin:10px;
+* {
+    font-family: 'Cantata One', serif;
+}
+body {
+    background-color: #ffffff;
+}
+
+.jumbotron {
+    text-align: center;
+    height: 200px;
+    background-color:  #0d0d0d;
+    color: #ffffff;
+    padding-bottom: 0;
+}
+
+.card-body {
+    text-align: center;
 }

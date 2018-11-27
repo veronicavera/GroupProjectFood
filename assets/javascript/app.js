@@ -157,13 +157,13 @@ $(document).ready(function(){
         <div class="card">
           <img class="card-img-top" src="images/Brunch & Specials-4.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Food Menu</h5>
+            <h5 class="card-title">— Food Menu —</h5>
           </div>
         </div>
         <div class="card">
           <img class="card-img-top" src="images/Monnie Burkes-8.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Cocktail Menu</h5>
+            <h5 class="card-title">— Cocktail Menu —</h5>
           </div>
         </div>
     </div>
