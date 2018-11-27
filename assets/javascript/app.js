@@ -6,7 +6,10 @@ $(document).ready(function(){
     //     loadMainMenu()
     // })
     $(document.body).on('click','#getFoodMenu',function(){
-        loadFoodMenu()
+        loadFoodMenu();
+    })
+    $(document.body).on('click','#getCocktailMenu',function(){
+        loadCocktailMenu();
     })
 
     // $(document.body).on('click','#searchByName',function(){
@@ -264,8 +267,54 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
-    `);
-    }
+    `)};
+    function loadCocktailMenu(){
+        $('#display').html('');
+        $('#display').append(`<div class="card-group">
+        <div class="card cocktailCard" style="width: 18rem;">
+            <img class="card-img-top" src="images/drinks2.jpg" alt="Card image cap" width="100%">
+            <div class="card-body">
+                <h5 class="card-title">Drinks by Alcohol Type</h5>
+                <p class="card-text">Choose an alcohol option from the list below.</p>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="cocktailMenu" type="button" data-toggle="dropdown">Alcohol
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li role="presentation">
+                            <a href="#">Vodka</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Gin</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Tequila</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Rum</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Whiskey</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card cocktailCard" style="width: 18rem;">
+            <img class="card-img-top" src="images/drinks.jpg" alt="Card image cap" width="100%">
+            <div class="card-body">
+                <h5 class="card-title">Random drinks</h5>
+                <p class="card-text">Click below for 10 random cocktails.</p>
+                <div class="random">
+                    <button class="btn btn-primary" id="randomCocktail" type="button">Random
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    `)};
+
     // function random(){
     //     var call='https://www.thecocktaildb.com/api/json/v1/1/random.php';
     //     $.ajax({
