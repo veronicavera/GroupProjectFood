@@ -5,6 +5,17 @@ body {
     background-color: #ffffff;
 }
 
+.breadcrumb {
+    background-color:  #1a1a1a; 
+    color: #ffffff;
+    padding-bottom: 0;
+    margin-bottom: 0px;
+}
+
+a {
+    color: white;
+}
+
 .jumbotron {
     text-align: center;
     height: 200px;
