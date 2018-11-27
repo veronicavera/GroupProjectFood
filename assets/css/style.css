@@ -8,9 +8,10 @@ body {
 .jumbotron {
     text-align: center;
     height: 200px;
-    background-color:  #0d0d0d;
+    background-color:  #1a1a1a; 
     color: #ffffff;
     padding-bottom: 0;
+    margin-bottom: 0px;
 }
 
 .card-body {
