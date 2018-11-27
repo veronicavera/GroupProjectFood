@@ -20,21 +20,22 @@ $(document).ready(function () {
     $(document.body).on('click', '#goCocktailMenu', function () {
         loadCocktailMenu();
     })
-    $(document.body).on('click','#cocktailSearch',function(){
-        if($('#alcoholChoice').val()!=='Select'){
-        var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholChoice').val();
-        $('#display').html('');
-        $.ajax({
-            url: call,
-            method: 'GET'
-          }).then(function(callback) {
-              console.log(callback)
-              for(var i=0;i<callback.drinks.length;i++){
-                  var cocktailDiv=`<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
-                  $('#display').append(cocktailDiv)
-              }
+    $(document.body).on('click', '#cocktailSearch', function () {
+        if ($('#alcoholChoice').val() !== 'Select') {
+            var call = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $('#alcoholChoice').val();
+            $('#display').html('');
+            $.ajax({
+                url: call,
+                method: 'GET'
+            }).then(function (callback) {
+                console.log(callback)
+                for (var i = 0; i < callback.drinks.length; i++) {
+                    var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+                    $('#display').append(cocktailDiv)
+                }
 
-          });}
+            });
+        }
     })
     // $(document.body).on('click','#searchByName',function(){
     //     $('#display').html('');
@@ -133,22 +134,22 @@ $(document).ready(function () {
 
     // $(document.body).on('click','#searchCocktailByInputAlcohol',function(){
 
-        // $('#display').append('<input id="alcoholInput">');
-        // $('#display').append('<button id="searchCocktailByInputAlcohol">Search cocktail by alcohol</button>');
+    // $('#display').append('<input id="alcoholInput">');
+    // $('#display').append('<button id="searchCocktailByInputAlcohol">Search cocktail by alcohol</button>');
 
-        // var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholInput').val();
-        // $('#display').html('');
-        // $.ajax({
-        //     url: call,
-        //     method: 'GET'
-        //   }).then(function(callback) {
-        //       console.log(callback)
-        //       for(var i=0;i<callback.drinks.length;i++){
-        //           var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
-        //           $('#display').append(cocktailDiv)
-        //       }
+    // var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholInput').val();
+    // $('#display').html('');
+    // $.ajax({
+    //     url: call,
+    //     method: 'GET'
+    //   }).then(function(callback) {
+    //       console.log(callback)
+    //       for(var i=0;i<callback.drinks.length;i++){
+    //           var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
+    //           $('#display').append(cocktailDiv)
+    //       }
 
-        //   });
+    //   });
 
     // })
     // $(document.body).on('click','.cocktail',function(){
@@ -260,7 +261,7 @@ function loadCocktailMenu() {
         <div class="card cocktailCard" style="width: 18rem;">
             <img class="card-img-top" src="images/drinks2.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
-                <h5 class="card-title">Drinks by Alcohol Type</h5>
+                <h5 class="card-title">Cocktails by Alcohol Type</h5>
                 <p class="card-text">Choose an alcohol option from the list below.</p>
                 <select class="form-control form-control-lg" id='alcoholChoice'>
                     <option>Select</option>
@@ -269,19 +270,18 @@ function loadCocktailMenu() {
                     <option>Vodka</option>
                     <option>Tequila</option>
                     <option>Rum</option>
+                    <option>Random</option>
                 </select>
-                <button id="cocktailSearch">Search For Your Next Meal</button>
+                <button class="btn-primary" id="cocktailSearchByType">Search For Your Next Cocktail</button>
             </div>
         </div>
         <div class="card cocktailCard" style="width: 18rem;">
             <img class="card-img-top" src="images/drinks.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
-                <h5 class="card-title">Random drinks</h5>
-                <p class="card-text">Click below for 10 random cocktails.</p>
-                <div class="random">
-                    <button class="btn btn-primary" id="randomCocktail" type="button">Random
-                    </button>
-                </div>
+                <h5 class="card-title">Cocktails by Name</h5>
+                <p class="card-text">Search below for cocktails by name.</p>
+                <input class="form-control" id="cocktailNameInput" placeholder="Margarita">
+                <button class = "btn-primary" id="cocktailSearchByName">Search For Your Next Cocktail</button>
             </div>
         </div>
     </div>
