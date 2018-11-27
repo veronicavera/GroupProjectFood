@@ -52,13 +52,15 @@ a:hover {
     opacity: .75;
 }
 
-#alcoholChoice {
-    background-color: #1a1a1a;
-    border-color: #ffffff;
-    color: #ffffff;
+#cocktailNameInput {
+    height: 48px;
 }
-.form-control {
+
+#cocktailSearchByType, #cocktailSearchByName{
+    margin-top: 25px;
+}
+
+.form-control:hover {
     background-color: #1a1a1a;
-    border-color: #ffffff;
-    color: #ffffff;   
+    color: #ffffff;
 }

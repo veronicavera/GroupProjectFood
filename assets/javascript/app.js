@@ -222,7 +222,7 @@ function loadFoodMenu() {
             </div>
         </div>
         <div class="card foodCard" style="width: 18rem;">
-            <img class="card-img-top" src="images/Veggie.jpg" alt="Card image cap" width="100%">
+            <img class="card-img-top" src="images/veggies.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
                 <h5 class="card-title">Vegetable</h5>
                 <p class="card-text">Choose a vegetable option from the list below.</p>
