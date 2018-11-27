@@ -1,14 +1,14 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     loadMainMenu();
-    
+
     // $('#cocktailMenu').on('click',function(){
     //     loadMainMenu()
     // })
-    $(document.body).on('click','#getFoodMenu',function(){
+    $(document.body).on('click', '#getFoodMenu', function () {
         loadFoodMenu();
     })
-    $(document.body).on('click','#getCocktailMenu',function(){
+    $(document.body).on('click', '#getCocktailMenu', function () {
         loadCocktailMenu();
     })
     $(document.body).on('click','#goHome',function(){
@@ -97,7 +97,7 @@ $(document).ready(function(){
     //             }
     //         })
     // })
-    
+
     // $(document.body).on('click','#searchCocktailByInputName',function(){
     //     $('#display').append('<input id="cocktailNameInput">');
     //     $('#display').append('<button id="searchCocktailByInputName">Search cocktail by Name</button>');
@@ -115,12 +115,12 @@ $(document).ready(function(){
     //           }
     //         })
     // })
-    
+
     // $(document.body).on('click','#searchCocktailByInputAlcohol',function(){
-        
+
     //     $('#display').append('<input id="alcoholInput">');
     //     $('#display').append('<button id="searchCocktailByInputAlcohol">Search cocktail by alcohol</button>');
-    
+
     //     var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholInput').val();
     //     $('#display').html('');
     //     $.ajax({
@@ -132,9 +132,9 @@ $(document).ready(function(){
     //               var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
     //               $('#display').append(cocktailDiv)
     //           }
-           
+
     //       });
-    
+
     // })
     // $(document.body).on('click','.cocktail',function(){
     //     $('#display').html('');
@@ -162,13 +162,13 @@ $(document).ready(function(){
     //         console.log(cocktailFullDiv)      
     //       });
     //   })
-    
-    
-    
-    })
-    function loadMainMenu(){
-        $('#display').html('');
-        $('#display').append(`
+
+
+
+})
+function loadMainMenu() {
+    $('#display').html('');
+    $('#display').append(`
         <div class="card-group">
         <div class="card" id='getFoodMenu'>
           <img class="card-img-top" src="images/Brunch & Specials-4.jpg" alt="Card image cap">
@@ -184,43 +184,25 @@ $(document).ready(function(){
         </div>
     </div>
     `);
-    }
-    function loadFoodMenu(){
-        $('#display').html('');
-        $('#display').append(`<div class="card-group">
+}
+function loadFoodMenu() {
+    $('#display').html('');
+    $('#display').append(`<div class="card-group">
         <div class="card foodCard" style="width: 18rem;">
             <img class="card-img-top" src="images/Mussels.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
                 <h5 class="card-title">Protein</h5>
                 <p class="card-text">Choose a protein option from the list below.</p>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" id="proteinMenu" type="button" data-toggle="dropdown">Proteins
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li role="presentation">
-                            <a href="#">Beef</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Chicken</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Lamb</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Pork</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Seafood</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Vegetarian</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Vegan</a>
-                        </li>
-                    </ul>
-                </div>
+                <select class="form-control form-control-lg">
+                <option>Select</option>
+                <option>Beef</option>
+                <option>Chicken</option>
+                <option>Lamb</option>
+                <option>Pork</option>
+                <option>Seafood</option>
+                <option>Vegetarian</option>
+                <option>Vegan</option>
+            </select>
             </div>
         </div>
         <div class="card foodCard" style="width: 18rem;">
@@ -228,25 +210,13 @@ $(document).ready(function(){
             <div class="card-body">
                 <h5 class="card-title">Vegetable</h5>
                 <p class="card-text">Choose a vegetable option from the list below.</p>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" id="vegetableMenu" type="button" data-toggle="dropdown">Vegetables
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li role="presentation">
-                            <a href="#">Tomato</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Zucchini</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Green Beans</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Broccoli</a>
-                        </li>
-                    </ul>
-                </div>
+                    <select class="form-control form-control-lg">
+                    <option>Select</option>
+                    <option>Tomato</option>
+                    <option>Onion</option>
+                    <option>Zucchini</option>
+                    <option>Eggplant</option>
+                </select>
             </div>
         </div>
         <div class="card foodCard" style="width: 18rem;">
@@ -254,32 +224,21 @@ $(document).ready(function(){
             <div class="card-body">
                 <h5 class="card-title">Carb</h5>
                 <p class="card-text">Choose a carb option from the list below.</p>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" id="carbMenu" type="button" data-toggle="dropdown">Carbs
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li role="presentation">
-                            <a href="#">Pasta</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Rice</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Potatoes</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Quinoa</a>
-                        </li>
-                    </ul>
-                </div>
+                    <select class="form-control form-control-lg">
+                    <option>Select</option>
+                    <option>Pasta</option>
+                    <option>Rice</option>
+                    <option>Potato</option>
+                    <option>Bread</option>
+                </select>
             </div>
         </div>
     </div>
-    `)};
-    function loadCocktailMenu(){
-        $('#display').html('');
-        $('#display').append(`<div class="card-group">
+    `)
+};
+function loadCocktailMenu() {
+    $('#display').html('');
+    $('#display').append(`<div class="card-group">
         <div class="card cocktailCard" style="width: 18rem;">
             <img class="card-img-top" src="images/drinks2.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
@@ -322,7 +281,8 @@ $(document).ready(function(){
         </div>
     </div>
     </div>
-    `)};
+    `)
+};
 
     // function random(){
     //     var call='https://www.thecocktaildb.com/api/json/v1/1/random.php';
@@ -330,7 +290,7 @@ $(document).ready(function(){
     //         url: call,
     //         method: 'GET'
     //       }).then(function(callback) {
-            
+
     //           for(var i=0;i<callback.drinks.length;i++){
     //             var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
     //             $('#display').append(cocktailDiv);
