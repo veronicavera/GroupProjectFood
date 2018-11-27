@@ -234,6 +234,9 @@ function loadFoodMenu() {
             </div>
         </div>
     </div>
+    <div>
+        <button id="foodSearch">Search For Your Next Meal</button>
+    </div>
     `)
 };
 function loadCocktailMenu() {
@@ -252,6 +255,7 @@ function loadCocktailMenu() {
                     <option>Tequila</option>
                     <option>Rum</option>
                 </select>
+                <button id="cocktailSearch">Search For Your Next Meal</button>
             </div>
         </div>
         <div class="card cocktailCard" style="width: 18rem;">
