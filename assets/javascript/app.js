@@ -20,8 +20,9 @@ $(document).ready(function () {
     $(document.body).on('click', '#goCocktailMenu', function () {
         loadCocktailMenu();
     })
-    $(document.body).on('click', '#cocktailSearch', function () {
+    $(document.body).on('click', '#cocktailSearchByType', function () {
         if ($('#alcoholChoice').val() !== 'Select') {
+            if($('#alcoholChoice').val() !== 'Select'){random()}
             var call = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $('#alcoholChoice').val();
             $('#display').html('');
             $.ajax({
@@ -36,6 +37,21 @@ $(document).ready(function () {
 
             });
         }
+    })
+    $(document.body).on('click','#cocktailSearchByName',function(){
+        var call='https://www.thecocktaildb.com/api/json/v1/1/search.php?s='+$('#cocktailNameInput').val();
+        $('#display').html('');
+        console.log(call)
+        $.ajax({
+            url: call,
+            method: 'GET'
+          }).then(function(callback) {
+              console.log(callback)
+              for(var i=0;i<callback.drinks.length;i++){
+                var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+                  $('#display').append(cocktailDiv)
+              }
+            })
     })
     // $(document.body).on('click','#searchByName',function(){
     //     $('#display').html('');
@@ -114,23 +130,7 @@ $(document).ready(function () {
     //         })
     // })
 
-    // $(document.body).on('click','#searchCocktailByInputName',function(){
-    //     $('#display').append('<input id="cocktailNameInput">');
-    //     $('#display').append('<button id="searchCocktailByInputName">Search cocktail by Name</button>');
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/search.php?s='+$('#cocktailNameInput').val();
-    //     $('#display').html('');
-    //     console.log(call)
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
-    //           console.log(callback)
-    //           for(var i=0;i<callback.drinks.length;i++){
-    //               var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
-    //               $('#display').append(cocktailDiv)
-    //           }
-    //         })
-    // })
+
 
     // $(document.body).on('click','#searchCocktailByInputAlcohol',function(){
 
@@ -289,16 +289,16 @@ function loadCocktailMenu() {
     `)
 };
 
-    // function random(){
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/random.php';
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
+    function random(){
+        var call='https://www.thecocktaildb.com/api/json/v1/1/random.php';
+        $.ajax({
+            url: call,
+            method: 'GET'
+          }).then(function(callback) {
 
-    //           for(var i=0;i<callback.drinks.length;i++){
-    //             var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
-    //             $('#display').append(cocktailDiv);
-    //             }
-    //         })
-    // }
+              for(var i=0;i<callback.drinks.length;i++){
+                var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+                $('#display').append(cocktailDiv);
+                }
+            })
+    }
