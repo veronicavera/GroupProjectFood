@@ -11,13 +11,13 @@ $(document).ready(function () {
     $(document.body).on('click', '#getCocktailMenu', function () {
         loadCocktailMenu();
     })
-    $(document.body).on('click','#goHome',function(){
+    $(document.body).on('click', '#goHome', function () {
         loadMainMenu();
     })
-    $(document.body).on('click','#goFoodMenu',function(){
+    $(document.body).on('click', '#goFoodMenu', function () {
         loadFoodMenu();
     })
-    $(document.body).on('click','#goCocktailMenu',function(){
+    $(document.body).on('click', '#goCocktailMenu', function () {
         loadCocktailMenu();
     })
 
@@ -171,13 +171,13 @@ function loadMainMenu() {
     $('#display').append(`
         <div class="card-group">
         <div class="card" id='getFoodMenu'>
-          <img class="card-img-top" src="images/Brunch & Specials-4.jpg" alt="Card image cap">
+          <img class="card-img-top mainPageImages" src="images/Brunch & Specials-4.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">— Food Menu —</h5>
           </div>
         </div>
         <div class="card" id='getCocktailMenu'>
-          <img class="card-img-top" src="images/Monnie Burkes-8.jpg" alt="Card image cap">
+          <img class="card-img-top mainPageImages" src="images/Monnie Burkes-8.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">— Cocktail Menu —</h5>
           </div>
@@ -244,28 +244,14 @@ function loadCocktailMenu() {
             <div class="card-body">
                 <h5 class="card-title">Drinks by Alcohol Type</h5>
                 <p class="card-text">Choose an alcohol option from the list below.</p>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" id="cocktailMenu" type="button" data-toggle="dropdown">Alcohol
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li role="presentation">
-                            <a href="#">Vodka</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Gin</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Tequila</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Rum</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">Whiskey</a>
-                        </li>
-                    </ul>
-                </div>
+                <select class="form-control form-control-lg">
+                    <option>Select</option>
+                    <option>Gin</option>
+                    <option>Whiskey</option>
+                    <option>Vodka</option>
+                    <option>Tequila</option>
+                    <option>Rum</option>
+                </select>
             </div>
         </div>
         <div class="card cocktailCard" style="width: 18rem;">
