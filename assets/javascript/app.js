@@ -11,6 +11,15 @@ $(document).ready(function(){
     $(document.body).on('click','#getCocktailMenu',function(){
         loadCocktailMenu();
     })
+    $(document.body).on('click','#goHome',function(){
+        loadMainMenu();
+    })
+    $(document.body).on('click','#goFoodMenu',function(){
+        loadFoodMenu();
+    })
+    $(document.body).on('click','#goCocktailMenu',function(){
+        loadCocktailMenu();
+    })
 
     // $(document.body).on('click','#searchByName',function(){
     //     $('#display').html('');
