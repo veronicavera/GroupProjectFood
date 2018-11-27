@@ -29,6 +29,12 @@ body {
     background-color: #1a1a1a;
     border-color: #ffffff;
 }
+button {
+    background-color: #1a1a1a;
+    border-color: #ffffff;
+    color: #ffffff;
+    border-radius: 10px;
+}
 
 .dropdown-menu {
     background-color: #1a1a1a;
@@ -38,8 +44,21 @@ a {
     color: #ffffff;
 }
 a:hover {
-    color: #a6a6a6;
-}
+    color: #ffffff;
+    background-color: #1a1a1a;
+}    
+
 .mainPageImages:hover {
-    opacity: .7;
+    opacity: .75;
+}
+
+#alcoholChoice {
+    background-color: #1a1a1a;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+.form-control {
+    background-color: #1a1a1a;
+    border-color: #ffffff;
+    color: #ffffff;   
 }
