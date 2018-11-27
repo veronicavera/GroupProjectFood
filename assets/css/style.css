@@ -10,12 +10,8 @@ body {
     color: #ffffff;
     padding-bottom: 0;
     margin-bottom: 0px;
+    border-radius: 0px;
 }
-
-a {
-    color: white;
-}
-
 .jumbotron {
     text-align: center;
     height: 200px;
@@ -27,4 +23,23 @@ a {
 
 .card-body {
     text-align: center;
+}
+
+.btn-primary {
+    background-color: #1a1a1a;
+    border-color: #ffffff;
+}
+
+.dropdown-menu {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+a {
+    color: #ffffff;
+}
+a:hover {
+    color: #a6a6a6;
+}
+.mainPageImages:hover {
+    opacity: .7;
 }
