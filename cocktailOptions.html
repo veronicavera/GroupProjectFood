@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Food & Cocktail Search</h1>
+            <p class="lead">Let us help you discover what you want today</p>
+        </div>
+    </div>
+    <div class="card-group">
+        <div class="card foodCard" style="width: 18rem;">
+            <img class="card-img-top" src="images/drinks2.jpg" alt="Card image cap" width="100%">
+            <div class="card-body">
+                <h5 class="card-title">Drinks by Alcohol Type</h5>
+                <p class="card-text">Choose an alcohol option from the list below.</p>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="proteinMenu" type="button" data-toggle="dropdown">Alcohol
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li role="presentation">
+                            <a href="#">Vodka</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Gin</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Tequila</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Rum</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Whiskey</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card foodCard" style="width: 18rem;">
+            <img class="card-img-top" src="images/drinks.jpg" alt="Card image cap" width="100%">
+            <div class="card-body">
+                <h5 class="card-title">Random drinks</h5>
+                <p class="card-text">Click below for 10 random cocktails.</p>
+                <div class="random">
+                    <button class="btn btn-primary" id="vegetableMenu" type="button">Random
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
