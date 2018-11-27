@@ -20,7 +20,22 @@ $(document).ready(function () {
     $(document.body).on('click', '#goCocktailMenu', function () {
         loadCocktailMenu();
     })
+    $(document.body).on('click','#cocktailSearch',function(){
+        if($('#alcoholChoice').val()!=='Select'){
+        var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholChoice').val();
+        $('#display').html('');
+        $.ajax({
+            url: call,
+            method: 'GET'
+          }).then(function(callback) {
+              console.log(callback)
+              for(var i=0;i<callback.drinks.length;i++){
+                  var cocktailDiv=`<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+                  $('#display').append(cocktailDiv)
+              }
 
+          });}
+    })
     // $(document.body).on('click','#searchByName',function(){
     //     $('#display').html('');
     //     $('#display').append('<input id="cocktailNameInput">');
@@ -118,22 +133,22 @@ $(document).ready(function () {
 
     // $(document.body).on('click','#searchCocktailByInputAlcohol',function(){
 
-    //     $('#display').append('<input id="alcoholInput">');
-    //     $('#display').append('<button id="searchCocktailByInputAlcohol">Search cocktail by alcohol</button>');
+        // $('#display').append('<input id="alcoholInput">');
+        // $('#display').append('<button id="searchCocktailByInputAlcohol">Search cocktail by alcohol</button>');
 
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholInput').val();
-    //     $('#display').html('');
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
-    //           console.log(callback)
-    //           for(var i=0;i<callback.drinks.length;i++){
-    //               var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
-    //               $('#display').append(cocktailDiv)
-    //           }
+        // var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholInput').val();
+        // $('#display').html('');
+        // $.ajax({
+        //     url: call,
+        //     method: 'GET'
+        //   }).then(function(callback) {
+        //       console.log(callback)
+        //       for(var i=0;i<callback.drinks.length;i++){
+        //           var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
+        //           $('#display').append(cocktailDiv)
+        //       }
 
-    //       });
+        //   });
 
     // })
     // $(document.body).on('click','.cocktail',function(){
@@ -247,7 +262,7 @@ function loadCocktailMenu() {
             <div class="card-body">
                 <h5 class="card-title">Drinks by Alcohol Type</h5>
                 <p class="card-text">Choose an alcohol option from the list below.</p>
-                <select class="form-control form-control-lg">
+                <select class="form-control form-control-lg" id='alcoholChoice'>
                     <option>Select</option>
                     <option>Gin</option>
                     <option>Whiskey</option>
