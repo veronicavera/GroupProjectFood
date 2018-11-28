@@ -19,7 +19,7 @@ body {
     color: #ffffff;
     padding-top: 30px;
     padding-bottom: 0;
-    margin-bottom: 0px;
+    margin-bottom: 25px;
 }
 
 .card-body {
@@ -76,8 +76,10 @@ a:hover {
 .recipeCard, .cocktailCard {
     display: inline-block;
     margin: 5px;
-    border: #1a1a1a;
-    border-width: 1px;
+    border-radius: 2px;
+    border-width:1px;
+    border-color: #1a1a1a;  
+    border-style:solid;
 }
 
 .recipeImgCard, .cocktailImgCard {
