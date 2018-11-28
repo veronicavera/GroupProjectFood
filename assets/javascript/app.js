@@ -70,7 +70,7 @@ $(document).ready(function () {
             if(callback.drinks[0].strIngredient5){cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 5: ${callback.drinks[0].strMeasure5} ${callback.drinks[0].strIngredient5}</h4>`)};
             if(callback.drinks[0].strIngredient6){cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 6: ${callback.drinks[0].strMeasure6} ${callback.drinks[0].strIngredient6}</h4>`)};
             if(callback.drinks[0].strIngredient7){cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 7: ${callback.drinks[0].strMeasure7} ${callback.drinks[0].strIngredient7}</h4>`)};
-            cocktailFullDiv.append(`<h4 class='instructionsFullCard'>Instructions: ${callback.drinks[0].strInstructions}</h4>`);
+            cocktailFullDiv.append(`<h4 class='cocktailinstructionsFullCard'>Instructions: ${callback.drinks[0].strInstructions}</h4>`);
              $('#display').append(cocktailFullDiv)    
           });
     })

@@ -101,6 +101,21 @@ a:hover {
 div {
     text-align: center;
 }
+.recipeImgFullCard, .cocktailImgFullCard {
+float: left;
+height: 600px;
+width: 600px;
+}
+.instructionsFullCard, .cocktailinstructionsFullCard{
+    text-align: center;
+    clear: both;
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+    border-width:3px;  
+    border-style:solid;
+    border-color: #1a1a1a
+}
 
 footer {
     margin-top: 100px;
