@@ -17,6 +17,7 @@ body {
     height: 200px;
     background-color:  #1a1a1a; 
     color: #ffffff;
+    padding-top: 30px;
     padding-bottom: 0;
     margin-bottom: 0px;
 }
@@ -34,6 +35,8 @@ button {
     border-color: #ffffff;
     color: #ffffff;
     border-radius: 10px;
+    text-align: center;
+    margin-top: 25px;
 }
 
 .dropdown-menu {
@@ -65,7 +68,40 @@ a:hover {
     color: #ffffff;
 }
 
-.card-title:hover {
+.main-links:hover {
    font-weight: bold;
    cursor:pointer;
+}
+
+.recipeCard, .cocktailCard {
+    display: inline-block;
+    margin: 5px;
+    border: #1a1a1a;
+    border-width: 1px;
+}
+
+.recipeImgCard, .cocktailImgCard {
+   height: 300px;
+   width: 300px;
+   float: left;
+   border-radius: 2px;
+}
+.recipeImgCard:hover, .cocktailImgCard:hover {
+    opacity: .75;
+}
+.recipeNameCard:hover, .cocktailNameCard:hover{
+    font-weight: bold;
+    cursor:pointer;
+}
+
+#searchByMainIngredient{
+    text-align: center;
+}
+
+div {
+    text-align: center;
+}
+
+footer {
+    margin-top: 100px;
 }

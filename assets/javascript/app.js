@@ -282,13 +282,13 @@ function loadMainMenu() {
         <div class="card" id='getFoodMenu'>
           <img class="card-img-top mainPageImages" src="images/Brunch & Specials-4.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">— Food Menu —</h5>
+            <h5 class="card-title main-links">— Food Menu —</h5>
           </div>
         </div>
         <div class="card" id='getCocktailMenu'>
           <img class="card-img-top mainPageImages" src="images/Monnie Burkes-8.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">— Cocktail Menu —</h5>
+            <h5 class="card-title main-links">— Cocktail Menu —</h5>
           </div>
         </div>
     </div>
@@ -314,13 +314,12 @@ function loadFoodMenu() {
                 <h5 class="card-title">Find recipes by category</h5>
                 <p class="card-text">Choose a category from the list below.</p>
                     <select class="form-control form-control-lg" id='categoryChoice'>
-                    <option>Select</option>
+                    <option>— Select —</option>
                     <option>Beef</option>
                     <option>Breakfast</option>
                     <option>Chicken</option>
                     <option>Desert</option>
                     <option>Lamb</option>
-                    <option>Miscellaneous</option>
                     <option>Pasta</option>
                     <option>Pork</option>
                     <option>Seafood</option>
@@ -340,7 +339,7 @@ function loadFoodMenu() {
                 <h5 class="card-title">Cuisine</h5>
                 <p class="card-text">Choose a cuisine from the list below.</p>
                     <select class="form-control form-control-lg" id='cuisineChoice'>
-                    <option>Select</option>
+                    <option>— Select —</option>
                     <option>American</option>
                     <option>British</option>
                     <option>Canadian</option>
@@ -351,7 +350,6 @@ function loadFoodMenu() {
                     <option>Indian</option>
                     <option>Irish</option>
                     <option>Italian</option>
-                    <option>Jamaican</option>
                     <option>Jamaican</option>
                     <option>Japanese</option>
                     <option>Malaysian</option>
@@ -379,7 +377,7 @@ function loadCocktailMenu() {
                 <h5 class="card-title">Cocktails by Alcohol Type</h5>
                 <p class="card-text">Choose an alcohol option from the list below.</p>
                 <select class="form-control form-control-lg" id='alcoholChoice'>
-                    <option>Select</option>
+                    <option>— Select —</option>
                     <option>Gin</option>
                     <option>Whiskey</option>
                     <option>Vodka</option>
@@ -395,7 +393,7 @@ function loadCocktailMenu() {
             <div class="card-body">
                 <h5 class="card-title">Cocktails by Name</h5>
                 <p class="card-text">Search below for cocktails by name.</p>
-                <input class="form-control" id="cocktailNameInput" placeholder="Margarita">
+                <input class="form-control" id="cocktailNameInput">
                 <button class = "btn-primary" id="cocktailSearchByName">Search For Your Next Cocktail</button>
             </div>
         </div>
