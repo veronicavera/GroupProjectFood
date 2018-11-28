@@ -423,7 +423,7 @@ function loadAgePage() {
         <input class="form-control" id="dobDay" maxlength="2" pattern="[0-9]*" placeholder="DD">
 
         <input class="form-control" id="dobYear" maxlength="4" pattern="[0-9]*" placeholder="YYYY">
-
+        <br>
         <button id="ageEnter">Enter</button>
     </div>
 </div>`);
