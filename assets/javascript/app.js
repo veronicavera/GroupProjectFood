@@ -6,8 +6,13 @@ $(document).ready(function () {
         loadFoodMenu();
     })
     $(document.body).on('click', '#getCocktailMenu', function () {
-        loadCocktailMenu();
-    })
+        console.log(localStorage.ageVerification);
+        if (localStorage.ageVerification != "passed") {
+            loadAgePage();
+        } else {
+            loadCocktailMenu();
+        };
+    });
     $(document.body).on('click', '#goHome', function () {
         loadMainMenu();
     })
@@ -15,9 +20,13 @@ $(document).ready(function () {
         loadFoodMenu();
     })
     $(document.body).on('click', '#goCocktailMenu', function () {
-        loadAgePage();
-
-    })
+        console.log(localStorage.ageVerification);
+        if (localStorage.ageVerification != "passed") {
+            loadAgePage();
+        } else {
+            loadCocktailMenu();
+        };
+    });
     $(document.body).on('click', '#cocktailSearchByType', function () {
         if ($('#alcoholChoice').val() !== 'Select') {
             if ($('#alcoholChoice').val() == 'Random') { random(); }
@@ -457,6 +466,8 @@ function agePage() {
             loadMainMenu();
         } else {
             loadCocktailMenu();
+            localStorage.ageVerification = "passed";
+
         };
     });
 };
