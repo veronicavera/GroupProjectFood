@@ -430,6 +430,20 @@ function loadAgePage() {
     agePage();
 };
 
+function ageDenied() {
+    $('#display').html('');
+    $('#display').append(`<div class="wrapper-body box">
+
+    <div class="age">
+        <p id="ageUnder">Sorry, your age restricts you from viewing our cocktail lists.</p>
+        <button id="homeReturn">Return to Home Page</button>
+    </div>
+</div>`);
+    $(document.body).on('click', '#homeReturn', function () {
+        loadMainMenu();
+    });
+}
+
 function random() {
     var call = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
     $.ajax({
@@ -461,7 +475,8 @@ function agePage() {
         console.log(currdate);
 
         if ((currdate - mydate) < 0) {
-            loadMainMenu();
+
+            ageDenied();
         } else {
             loadCocktailMenu();
             localStorage.ageVerification = "passed";

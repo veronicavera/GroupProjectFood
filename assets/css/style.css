@@ -105,3 +105,44 @@ div {
 footer {
     margin-top: 100px;
 }
+
+.box {
+    background-color: black;
+    height: 500px;
+    margin: 50px;
+    padding: 200px 0;
+    text-align: center;
+    position: relative;
+}
+
+#ageText {
+    color: white;
+    text-align: center;
+}
+
+#dobDay {
+    width: 105px;
+    height: 105px;
+    font-size: 32px;
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+}
+
+#dobMonth {
+    width: 105px;
+    height: 105px;
+    font-size: 32px;
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+}
+
+#dobYear {
+    width: 105px;
+    height: 105px;
+    font-size: 32px;
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+}
