@@ -64,3 +64,8 @@ a:hover {
     background-color: #1a1a1a;
     color: #ffffff;
 }
+
+.card-title:hover {
+   font-weight: bold;
+   cursor:pointer;
+}
