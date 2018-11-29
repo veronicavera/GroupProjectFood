@@ -1,44 +1,56 @@
 $(document).ready(function () {
-
+    //When the page is loaded, call function loadMainMenu that loads our display div.
     loadMainMenu();
-
     $(document.body).on('click', '#getFoodMenu', function () {
+        //If user clicks on food menu, we call loadFoodMenu function that changes our display div.
         loadFoodMenu();
     })
     $(document.body).on('click', '#getCocktailMenu', function () {
-        console.log(localStorage.ageVerification);
+        //We chech if age verification is passed(we store that value in local storage). If no, we call loadAgePage function that changes our display div.
         if (localStorage.ageVerification != "passed") {
             loadAgePage();
         } else {
+            //If age verification is passed, we call loadCocktailMenu function that changes our display div.
             loadCocktailMenu();
         };
     });
     $(document.body).on('click', '#goHome', function () {
+        //If user clicks on home button, we call loadMainMenu function that loads our strarting display div.
         loadMainMenu();
     })
     $(document.body).on('click', '#goFoodMenu', function () {
+        //If user clicks on food menu button we call loadFoodMenu function that changes our display div.
         loadFoodMenu();
     })
     $(document.body).on('click', '#goCocktailMenu', function () {
-        console.log(localStorage.ageVerification);
+        //If our user clicks on cocktail menu button we check age verificaion.
         if (localStorage.ageVerification != "passed") {
+            //If age verification is not passed yet, we call loadAgePage function that changes our div.
             loadAgePage();
         } else {
+            //If age verification is passed we call loadCocktailMenu function that changes our display div.
             loadCocktailMenu();
         };
     });
     $(document.body).on('click', '#cocktailSearchByType', function () {
+        //On the cocktail page if user pushed button serch cocktail by type, we check if he changed the value of select.
         if ($('#alcoholChoice').val() !== 'Select') {
+            //If user selected random we load our random function that gives us a random cocktail.
             if ($('#alcoholChoice').val() == 'Random') { random(); }
+            //We grab the value of select and modify our call with it.
             var call = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $('#alcoholChoice').val();
+            //Clearing our display.
             $('#display').html('');
+            //Our AJAX call.
             $.ajax({
                 url: call,
                 method: 'GET'
             }).then(function (callback) {
-                console.log(callback)
+                //For loop to go over callback values.
                 for (var i = 0; i < callback.drinks.length; i++) {
+                    //We go over our callback and storing data values in our cocktailDiv variable.
                     var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+                    //We append our cocktailDiv with data to the display.
                     $('#display').append(cocktailDiv)
                 }
 
@@ -46,26 +58,34 @@ $(document).ready(function () {
         }
     })
     $(document.body).on('click', '#cocktailSearchByName', function () {
+         //On the cocktail page if user pushed button serch cocktail by name we grab the value of input and modify our call.
         var call = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + $('#cocktailNameInput').val();
+        //Clearing the display.
         $('#display').html('');
+        //Our AJAX call.
         $.ajax({
             url: call,
             method: 'GET'
         }).then(function (callback) {
-            console.log(callback)
+            //For loop to go over callback values.
             for (var i = 0; i < callback.drinks.length; i++) {
+                //We go over our callback and storing data values in our cocktailDiv variable.
                 var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+                //We append our cocktailDiv with data to the display.
                 $('#display').append(cocktailDiv)
             }
         })
     })
     $(document.body).on('click', '.cocktailCard', function () {
+        //When user clicks on a cocktail card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
         var call = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + $(this).attr('data-id');
+        //Emptyind the display.
         $('#display').html('');
         $.ajax({
             url: call,
             method: 'GET'
         }).then(function (callback) {
+            //We create cocktailFullDiv element and modify it with the data from callback for specific cocktail user clicked on.
             var cocktailFullDiv = $('<div>');
             cocktailFullDiv.attr('class', 'cocktailFullCard');
             cocktailFullDiv.append(`<img class='cocktailImgFullCard' src=${callback.drinks[0].strDrinkThumb}>`);
@@ -81,57 +101,77 @@ $(document).ready(function () {
             if (callback.drinks[0].strIngredient6) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 6: ${callback.drinks[0].strMeasure6} ${callback.drinks[0].strIngredient6}</h4>`) };
             if (callback.drinks[0].strIngredient7) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 7: ${callback.drinks[0].strMeasure7} ${callback.drinks[0].strIngredient7}</h4>`) };
             cocktailFullDiv.append(`<h4 class='instructionsFullCard'>Instructions: ${callback.drinks[0].strInstructions}</h4>`);
+            //We append our element to display.
             $('#display').append(cocktailFullDiv)
         });
     })
     $(document.body).on('click', '#searchByMainIngredient', function () {
+        //If users clicked on search by main ingredient button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=' + $('#mainIngredientChoice').val();
+         //Clearing the display.
         $('#display').html('');
+        //Our AJAX call.
         $.ajax({
             url: call,
             method: 'GET'
         }).then(function (callback) {
+            //For loop to go over callback values.
             for (var i = 0; i < callback.meals.length; i++) {
+                //We create a variable recipeDiv and modify it with the data from callback.
                 var reciepeDiv = `<div class='recipeCard' data-id=${callback.meals[i].idMeal}><h5 class='recipeNameCard'>${callback.meals[i].strMeal}</h5> <img class='recipeImgCard' src=${callback.meals[i].strMealThumb}></div>`
+                //Appending our recipeDiv to our display.
                 $('#display').append(reciepeDiv)
             }
         })
     })
     $(document.body).on('click', '#searchByCategory', function () {
+        //If users clicked on search by category button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + $('#categoryChoice').val();
+        //Clearing the display.
         $('#display').html('');
+        //Our AJAX call.
         $.ajax({
             url: call,
             method: 'GET'
         }).then(function (callback) {
+            //For loop to go over callback values.
             for (var i = 0; i < callback.meals.length; i++) {
+                //We create a variable recipeDiv and modify it with the data from callback.
                 var reciepeDiv = `<div class='recipeCard' data-id=${callback.meals[i].idMeal}><h5 class='recipeNameCard'>${callback.meals[i].strMeal}</h5> <img class='recipeImgCard' src=${callback.meals[i].strMealThumb}></div>`
+                //Appending our recipeDiv to our display.
                 $('#display').append(reciepeDiv)
             }
         })
     })
     $(document.body).on('click', '#searchByCuisine', function () {
+        //If users clicked on search by cuisine button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=' + $('#cuisineChoice').val();
+         //Clearing the display.
         $('#display').html('');
+         //Our AJAX call.
         $.ajax({
             url: call,
             method: 'GET'
         }).then(function (callback) {
-            console.log(callback)
+            //For loop to go over callback values.
             for (var i = 0; i < callback.meals.length; i++) {
+                //We create a variable recipeDiv and modify it with the data from callback.
                 var reciepeDiv = `<div class='recipeCard' data-id=${callback.meals[i].idMeal}><h5 class='recipeNameCard'>${callback.meals[i].strMeal}</h5> <img class='recipeImgCard' src=${callback.meals[i].strMealThumb}></div>`
+                //Appending our recipeDiv to our display.
                 $('#display').append(reciepeDiv)
             }
         })
     })
     $(document.body).on('click', '.recipeCard', function () {
+        //When user clicks on a recipe card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
         var call = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + $(this).attr('data-id');
+        //Emptyind the display.
         $('#display').html('');
         $.ajax({
             url: call,
             method: 'GET'
         }).then(function (callback) {
-            console.log(callback)
+            //We create recipeFullDiv element and modify it with the data from callback for specific recipe user clicked on.
             var recipeFullDiv = $('<div>');
             recipeFullDiv.attr('class', 'recipeFullCard');
             recipeFullDiv.append(`<img class='recipeImgFullCard' src=${callback.meals[0].strMealThumb}>`);
@@ -152,140 +192,14 @@ $(document).ready(function () {
             if (callback.meals[0].strIngredient12) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 12: ${callback.meals[0].strMeasure12} ${callback.meals[0].strIngredient12}</h4>`) };
             if (callback.meals[0].strIngredient13) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 13: ${callback.meals[0].strMeasure13} ${callback.meals[0].strIngredient13}</h4>`) };
             recipeFullDiv.append(`<h4 class='instructionsFullCard'>Instructions: ${callback.meals[0].strInstructions}</h4>`);
+            //we append that recipeFullDiv variable to display div.
             $('#display').append(recipeFullDiv)
         });
     })
 
-    // $(document.body).on('click','#searchByName',function(){
-    //     $('#display').html('');
-    //     $('#display').append('<input id="cocktailNameInput">');
-    //     $('#display').append('<button id="searchCocktailByInputName">Search cocktail by Name</button>');
-    // })
-    // $(document.body).on('click','#searchByAlcohol',function(){
-    //     $('#display').html('');
-    //     $('#display').append('<input id="alcoholInput">');
-    //     $('#display').append('<button id="searchCocktailByInputAlcohol">Search cocktail by alcohol</button>');
-    // })
-    // $(document.body).on('click','#searchByGlass',function(){
-    //     $('#display').html('');
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list';
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
-    //           console.log(callback)
-    //           for(var i=0;i<callback.drinks.length;i++){
-    //               var glassButton=$('<button>');
-    //               glassButton.append(callback.drinks[i].strGlass);
-    //               glassButton.attr('data-glass',callback.drinks[i].strGlass);
-    //               glassButton.attr('class','buttonGlass');
-    //               $('#display').append(glassButton);
-    //           }
-    //         })
-    // })
-    // $(document.body).on('click','#searchByCategory',function(){
-    //     $('#display').html('');
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
-    //           console.log(callback)
-    //           for(var i=0;i<callback.drinks.length;i++){
-    //               var categoryButton=$('<button>');
-    //               categoryButton.append(callback.drinks[i].strCategory);
-    //               categoryButton.attr('data-category',callback.drinks[i].strCategory);
-    //               categoryButton.attr('class','cocktailCategory');
-    //               $('#display').append(categoryButton);
-    //           }
-    //         })
-    // })
-    // $(document.body).on('click','#getRandomCocktail',function(){
-    //     $('#display').html('');
-    //     for(i=0;i<5;i++){
-    //         random();    
-    //     }
-    // })
-    // $(document.body).on('click','.cocktailCategory',function(){
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?c='+$(this).attr('data-category');
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
-    //         $('#display').html('');
-    //           for(var i=0;i<callback.drinks.length;i++){
-    //             var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
-    //             $('#display').append(cocktailDiv);
-    //             }
-    //         })
-    // })
-    // $(document.body).on('click','.buttonGlass',function(){
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?g='+$(this).attr('data-glass');
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
-    //         $('#display').html('');
-    //           for(var i=0;i<callback.drinks.length;i++){
-    //             var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
-    //             $('#display').append(cocktailDiv);
-    //             }
-    //         })
-    // })
-
-
-
-    // $(document.body).on('click','#searchCocktailByInputAlcohol',function(){
-
-    // $('#display').append('<input id="alcoholInput">');
-    // $('#display').append('<button id="searchCocktailByInputAlcohol">Search cocktail by alcohol</button>');
-
-    // var call='https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+$('#alcoholInput').val();
-    // $('#display').html('');
-    // $.ajax({
-    //     url: call,
-    //     method: 'GET'
-    //   }).then(function(callback) {
-    //       console.log(callback)
-    //       for(var i=0;i<callback.drinks.length;i++){
-    //           var cocktailDiv=`<div class='cocktail' data-id=${callback.drinks[i].idDrink}>${callback.drinks[i].strDrink} <img src=${callback.drinks[i].strDrinkThumb} width=200px></div>`
-    //           $('#display').append(cocktailDiv)
-    //       }
-
-    //   });
-
-    // })
-    // $(document.body).on('click','.cocktail',function(){
-    //     $('#display').html('');
-    //     var call='https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='+$(this).attr('data-id');
-    //     $.ajax({
-    //         url: call,
-    //         method: 'GET'
-    //       }).then(function(callback) {
-    //           console.log(callback)
-    //          var cocktailFullDiv=$('<div>');
-    //          cocktailFullDiv.append(`<img src=${callback.drinks[0].strDrinkThumb} width=300px>`);
-    //          cocktailFullDiv.append(`<h3>Name: ${callback.drinks[0].strDrink}</h3>`);
-    //          cocktailFullDiv.append(`<h4>Type: ${callback.drinks[0].strAlcoholic}</h4>`);
-    //          cocktailFullDiv.append(`<h4>Glass: ${callback.drinks[0].strGlass}</h4>`);
-    //          cocktailFullDiv.append(`<h4>Category: ${callback.drinks[0].strCategory}</h4>`);
-    //          if(callback.drinks[0].strIngredient1){cocktailFullDiv.append(`<h4>Ingredient 1: ${callback.drinks[0].strMeasure1} ${callback.drinks[0].strIngredient1}</h4>`)};
-    //          if(callback.drinks[0].strIngredient2){cocktailFullDiv.append(`<h4>Ingredient 2: ${callback.drinks[0].strMeasure2} ${callback.drinks[0].strIngredient2}</h4>`)};
-    //          if(callback.drinks[0].strIngredient3){cocktailFullDiv.append(`<h4>Ingredient 3: ${callback.drinks[0].strMeasure3} ${callback.drinks[0].strIngredient3}</h4>`)};
-    //          if(callback.drinks[0].strIngredient4){cocktailFullDiv.append(`<h4>Ingredient 4: ${callback.drinks[0].strMeasure4} ${callback.drinks[0].strIngredient4}</h4>`)};
-    //          if(callback.drinks[0].strIngredient5){cocktailFullDiv.append(`<h4>Ingredient 5: ${callback.drinks[0].strMeasure5} ${callback.drinks[0].strIngredient5}</h4>`)};
-    //          if(callback.drinks[0].strIngredient6){cocktailFullDiv.append(`<h4>Ingredient 6: ${callback.drinks[0].strMeasure6} ${callback.drinks[0].strIngredient6}</h4>`)};
-    //          if(callback.drinks[0].strIngredient7){cocktailFullDiv.append(`<h4>Ingredient 7: ${callback.drinks[0].strMeasure7} ${callback.drinks[0].strIngredient7}</h4>`)};
-    //          cocktailFullDiv.append(`<h4>Instructions: ${callback.drinks[0].strInstructions}</h4>`);
-    //          $('#display').append(cocktailFullDiv)
-    //         console.log(cocktailFullDiv)      
-    //       });
-    //   })
-
-
-
 })
 function loadMainMenu() {
+    //Our loadMainMenu function. We clear the display and append new elements for main menu.
     $('#display').html('');
     $('#display').append(`
         <div class="card-group">
@@ -305,6 +219,7 @@ function loadMainMenu() {
     `);
 }
 function loadFoodMenu() {
+    //Our loadFoodMenu function. We clear the display and load new elements for food menu.
     $('#display').html('');
     $('#display').append(`<div class="card-group">
         <div class="card foodCard" style="width: 18rem;">
@@ -379,6 +294,7 @@ function loadFoodMenu() {
     `)
 };
 function loadCocktailMenu() {
+    //Our loadCocktailMenu function. We clear the display and load new elements for our cocktail menu.
     $('#display').html('');
     $('#display').append(`<div class="card-group">
         <div class="card" style="width: 18rem;">
@@ -413,6 +329,7 @@ function loadCocktailMenu() {
 };
 
 function loadAgePage() {
+    //Our load age page function. We clear the display and load new elements
     $('#display').html('');
     $('#display').append(`<div class="wrapper-body box">
 
@@ -431,6 +348,7 @@ function loadAgePage() {
 };
 
 function ageDenied() {
+    //Our age dinied function. We clear the display and load new elements for age denied menu.
     $('#display').html('');
     $('#display').append(`<div class="wrapper-body box">
 
@@ -444,20 +362,8 @@ function ageDenied() {
     });
 }
 
-function random() {
-    var call = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
-    $.ajax({
-        url: call,
-        method: 'GET'
-    }).then(function (callback) {
-        for (var i = 0; i < callback.drinks.length; i++) {
-            var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
-            $('#display').append(cocktailDiv);
-        }
-    })
-}
-
 function agePage() {
+    //our age page function.
     $(document.body).on('click', '#ageEnter', function () {
         var month = $("#dobMonth").val();
         var day = $("#dobDay").val();
@@ -484,3 +390,16 @@ function agePage() {
         };
     });
 };
+function random() {
+    //our random function to get a random cocktail.
+    var call = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+    $.ajax({
+        url: call,
+        method: 'GET'
+    }).then(function (callback) {
+        for (var i = 0; i < callback.drinks.length; i++) {
+            var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+            $('#display').append(cocktailDiv);
+        }
+    })
+}
