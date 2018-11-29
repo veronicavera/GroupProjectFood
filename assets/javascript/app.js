@@ -34,7 +34,7 @@ $(document).ready(function () {
     });
     //On the cocktail page if user pushed button serch cocktail by type, we check if he changed the value of select.
     $(document.body).on('click', '#cocktailSearchByType', function () {
-        if ($('#alcoholChoice').val() !== 'Select') {
+        if ($('#alcoholChoice').val() !== '— Select —') {
             //If user selected random we load our random function that gives us a random cocktail.
             if ($('#alcoholChoice').val() == 'Random') { random(); }
             //We grab the value of select and modify our call with it.
@@ -126,6 +126,7 @@ $(document).ready(function () {
     })
     //If users clicked on search by category button we grab the value form input and modify our call.
     $(document.body).on('click', '#searchByCategory', function () {
+        if($('#categoryChoice').val()!='— Select —'){
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + $('#categoryChoice').val();
         //Clearing the display.
         $('#display').html('');
@@ -141,10 +142,11 @@ $(document).ready(function () {
                 //Appending our recipeDiv to our display.
                 $('#display').append(reciepeDiv)
             }
-        })
+        })}
     })
     //If users clicked on search by cuisine button we grab the value form input and modify our call.
     $(document.body).on('click', '#searchByCuisine', function () {
+        if($('#cuisineChoice').val()!='— Select —'){
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=' + $('#cuisineChoice').val();
         //Clearing the display.
         $('#display').html('');
@@ -160,7 +162,7 @@ $(document).ready(function () {
                 //Appending our recipeDiv to our display.
                 $('#display').append(reciepeDiv)
             }
-        })
+        })}
     })
     //When user clicks on a recipe card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
     $(document.body).on('click', '.recipeCard', function () {
