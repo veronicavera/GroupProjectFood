@@ -58,7 +58,7 @@ $(document).ready(function () {
         }
     })
     $(document.body).on('click', '#cocktailSearchByName', function () {
-         //On the cocktail page if user pushed button serch cocktail by name we grab the value of input and modify our call.
+        //On the cocktail page if user pushed button serch cocktail by name we grab the value of input and modify our call.
         var call = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + $('#cocktailNameInput').val();
         //Clearing the display.
         $('#display').html('');
@@ -108,7 +108,7 @@ $(document).ready(function () {
     $(document.body).on('click', '#searchByMainIngredient', function () {
         //If users clicked on search by main ingredient button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=' + $('#mainIngredientChoice').val();
-         //Clearing the display.
+        //Clearing the display.
         $('#display').html('');
         //Our AJAX call.
         $.ajax({
@@ -146,9 +146,9 @@ $(document).ready(function () {
     $(document.body).on('click', '#searchByCuisine', function () {
         //If users clicked on search by cuisine button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=' + $('#cuisineChoice').val();
-         //Clearing the display.
+        //Clearing the display.
         $('#display').html('');
-         //Our AJAX call.
+        //Our AJAX call.
         $.ajax({
             url: call,
             method: 'GET'
@@ -243,7 +243,7 @@ function loadFoodMenu() {
                     <option>Beef</option>
                     <option>Breakfast</option>
                     <option>Chicken</option>
-                    <option>Desert</option>
+                    <option>Dessert</option>
                     <option>Lamb</option>
                     <option>Pasta</option>
                     <option>Pork</option>
@@ -344,8 +344,24 @@ function loadAgePage() {
         <button id="ageEnter">Enter</button>
     </div>
 </div>`);
-    agePage();
 };
+
+function validAge() {
+    $('#display').html('');
+    $('#display').append(`<div class="wrapper-body box">
+
+    <div class="age">
+        <p id="validText">Please enter a valid birthdate.</p>
+        <input class="form-control" id="dobMonth" maxlength="2" pattern="[0-9]*" placeholder="MM">
+
+        <input class="form-control" id="dobDay" maxlength="2" pattern="[0-9]*" placeholder="DD">
+
+        <input class="form-control" id="dobYear" maxlength="4" pattern="[0-9]*" placeholder="YYYY">
+        <br>
+        <button id="ageEnter">Enter</button>
+    </div>
+</div>`);
+}
 
 function ageDenied() {
     //Our age dinied function. We clear the display and load new elements for age denied menu.
@@ -362,34 +378,34 @@ function ageDenied() {
     });
 }
 
-function agePage() {
-    //our age page function.
-    $(document.body).on('click', '#ageEnter', function () {
-        var month = $("#dobMonth").val();
-        var day = $("#dobDay").val();
-        var year = $("#dobYear").val();
-        var age = 21;
-        var mydate = new Date();
-        console.log(mydate);
+//our age page function.
+$(document).on('click', '#ageEnter', function () {
+    var month = $("#dobMonth").val();
+    var day = $("#dobDay").val();
+    var year = $("#dobYear").val();
+    var age = 21;
+    var mydate = new Date();
+    console.log(mydate);
 
-        mydate.setFullYear(year, month - 1, day);
-        console.log(mydate);
+    mydate.setFullYear(year, month - 1, day);
+    console.log(mydate);
 
-        var currdate = new Date();
+    var currdate = new Date();
 
-        currdate.setFullYear(currdate.getFullYear() - age);
-        console.log(currdate);
+    currdate.setFullYear(currdate.getFullYear() - age);
+    console.log(currdate);
 
-        if ((currdate - mydate) < 0) {
+    if (month == "" || isNaN(month) || day == "" || isNaN(day) || year == "" || isNaN(year)) {
+        validAge();
+    } else if ((currdate - mydate) < 0) {
+        ageDenied();
+    } else {
+        loadCocktailMenu();
+        localStorage.ageVerification = "passed";
 
-            ageDenied();
-        } else {
-            loadCocktailMenu();
-            localStorage.ageVerification = "passed";
+    };
+});
 
-        };
-    });
-};
 function random() {
     //our random function to get a random cocktail.
     var call = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
