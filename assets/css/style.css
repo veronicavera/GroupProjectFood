@@ -105,15 +105,17 @@ div {
 }
 .recipeImgFullCard{
 float: left;
-height: 600px;
-width: 600px;
+height: 50%;
+width: 50%;
 margin: auto;
+margin-bottom: 20px;  
 }
 .cocktailImgFullCard {
     float: left;
-    height: 500px;
-    width: 500px;
-    margin: auto;   
+    height: 50%;
+    width: 50%;
+    margin: auto; 
+    margin-bottom: 20px;  
 }
 .instructionsFullCard, .cocktailinstructionsFullCard{
     text-align: center;
@@ -123,7 +125,17 @@ margin: auto;
     padding: 20px 0 20px 0;
     border-width:3px;  
     border-style:solid;
-    border-color: #1a1a1a
+    border-color: #1a1a1a;
+    margin-bottom: 20px;  
+}
+
+.cocktailFullCard {
+    width: 90%;
+    border-width:3px;  
+    border-style:solid;
+    border-color: #1a1a1a;
+    margin: auto;
+
 }
 
 footer {
@@ -177,4 +189,9 @@ footer {
     font-weight: bold;
     font-family: 'Black Han Sans', sans-serif;
 
+}
+.fullCard{
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 10px;
 }

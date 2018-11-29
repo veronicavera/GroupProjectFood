@@ -6,7 +6,7 @@ $(document).ready(function () {
         loadFoodMenu();
     })
     $(document.body).on('click', '#getCocktailMenu', function () {
-        //We check if age verification is passed(we store that value in local storage). If no, we call loadAgePage function that changes our display div.
+        //We check if age verification is passed (we store that value in local storage). If no, we call loadAgePage function that changes our display div.
         if (localStorage.ageVerification != "passed") {
             loadAgePage();
         } else {
@@ -15,7 +15,7 @@ $(document).ready(function () {
         };
     });
     $(document.body).on('click', '#goHome', function () {
-        //If user clicks on home button, we call loadMainMenu function that loads our strarting display div.
+        //If user clicks on home button, we call loadMainMenu function that loads our starting display div.
         loadMainMenu();
     })
     $(document.body).on('click', '#goFoodMenu', function () {
@@ -36,29 +36,30 @@ $(document).ready(function () {
         //On the cocktail page if user pushed button serch cocktail by type, we check if he changed the value of select.
         if ($('#alcoholChoice').val() !== 'Select') {
             //If user selected random we load our random function that gives us a random cocktail.
-            if ($('#alcoholChoice').val() == 'Random') { random(); }
-            //We grab the value of select and modify our call with it.
-            var call = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $('#alcoholChoice').val();
-            //Clearing our display.
-            $('#display').html('');
-            //Our AJAX call.
-            $.ajax({
-                url: call,
-                method: 'GET'
-            }).then(function (callback) {
-                //For loop to go over callback values.
-                for (var i = 0; i < callback.drinks.length; i++) {
-                    //We go over our callback and storing data values in our cocktailDiv variable.
-                    var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
-                    //We append our cocktailDiv with data to the display.
-                    $('#display').append(cocktailDiv)
-                }
+            if ($('#alcoholChoice').val() == 'Random') { random(); } else {
+                //We grab the value of select and modify our call with it.
+                var call = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $('#alcoholChoice').val();
+                //Clearing our display.
+                $('#display').html('');
+                //Our AJAX call.
+                $.ajax({
+                    url: call,
+                    method: 'GET'
+                }).then(function (callback) {
+                    //For loop to go over callback values.
+                    for (var i = 0; i < callback.drinks.length; i++) {
+                        //We go over our callback and storing data values in our cocktailDiv variable.
+                        var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+                        //We append our cocktailDiv with data to the display.
+                        $('#display').append(cocktailDiv)
+                    }
 
-            });
+                });
+            }
         }
     })
     $(document.body).on('click', '#cocktailSearchByName', function () {
-         //On the cocktail page if user pushed button serch cocktail by name we grab the value of input and modify our call.
+         //On the cocktail page if user pushed button search cocktail by name we grab the value of input and modify our call.
         var call = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + $('#cocktailNameInput').val();
         //Clearing the display.
         $('#display').html('');
@@ -79,7 +80,7 @@ $(document).ready(function () {
     $(document.body).on('click', '.cocktailCard', function () {
         //When user clicks on a cocktail card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
         var call = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + $(this).attr('data-id');
-        //Emptyind the display.
+        //Emptying the display.
         $('#display').html('');
         $.ajax({
             url: call,
@@ -89,17 +90,16 @@ $(document).ready(function () {
             var cocktailFullDiv = $('<div>');
             cocktailFullDiv.attr('class', 'cocktailFullCard');
             cocktailFullDiv.append(`<img class='cocktailImgFullCard' src=${callback.drinks[0].strDrinkThumb}>`);
-            cocktailFullDiv.append(`<h3 class='cocktailNameFullCard'>Name: ${callback.drinks[0].strDrink}</h3>`);
-            cocktailFullDiv.append(`<h4 class='cocktailTypeFullCard'>Type: ${callback.drinks[0].strAlcoholic}</h4>`);
-            cocktailFullDiv.append(`<h4 class='cocktailGlassFullCard'>Glass: ${callback.drinks[0].strGlass}</h4>`);
-            cocktailFullDiv.append(`<h4 class='cocktailCategoryFullCard'>Category: ${callback.drinks[0].strCategory}</h4>`);
-            if (callback.drinks[0].strIngredient1) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 1: ${callback.drinks[0].strMeasure1} ${callback.drinks[0].strIngredient1}</h4>`) };
-            if (callback.drinks[0].strIngredient2) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 2: ${callback.drinks[0].strMeasure2} ${callback.drinks[0].strIngredient2}</h4>`) };
-            if (callback.drinks[0].strIngredient3) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 3: ${callback.drinks[0].strMeasure3} ${callback.drinks[0].strIngredient3}</h4>`) };
-            if (callback.drinks[0].strIngredient4) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 4: ${callback.drinks[0].strMeasure4} ${callback.drinks[0].strIngredient4}</h4>`) };
-            if (callback.drinks[0].strIngredient5) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 5: ${callback.drinks[0].strMeasure5} ${callback.drinks[0].strIngredient5}</h4>`) };
-            if (callback.drinks[0].strIngredient6) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 6: ${callback.drinks[0].strMeasure6} ${callback.drinks[0].strIngredient6}</h4>`) };
-            if (callback.drinks[0].strIngredient7) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>Ingredient 7: ${callback.drinks[0].strMeasure7} ${callback.drinks[0].strIngredient7}</h4>`) };
+            cocktailFullDiv.append(`<h3 class='cocktailNameFullCard fullCard'>${callback.drinks[0].strDrink}</h3>`);
+            cocktailFullDiv.append(`<h4 class='cocktailGlassFullCard'>${callback.drinks[0].strGlass}</h4>`);
+            cocktailFullDiv.append(`<h4 class='cocktailGlassFullCard fullCard'>Ingredients: </h4>`);
+            if (callback.drinks[0].strIngredient1) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure1} ${callback.drinks[0].strIngredient1}</h4>`) };
+            if (callback.drinks[0].strIngredient2) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure2} ${callback.drinks[0].strIngredient2}</h4>`) };
+            if (callback.drinks[0].strIngredient3) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure3} ${callback.drinks[0].strIngredient3}</h4>`) };
+            if (callback.drinks[0].strIngredient4) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure4} ${callback.drinks[0].strIngredient4}</h4>`) };
+            if (callback.drinks[0].strIngredient5) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure5} ${callback.drinks[0].strIngredient5}</h4>`) };
+            if (callback.drinks[0].strIngredient6) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure6} ${callback.drinks[0].strIngredient6}</h4>`) };
+            if (callback.drinks[0].strIngredient7) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure7} ${callback.drinks[0].strIngredient7}</h4>`) };
             cocktailFullDiv.append(`<h4 class='instructionsFullCard'>Instructions: ${callback.drinks[0].strInstructions}</h4>`);
             //We append our element to display.
             $('#display').append(cocktailFullDiv)
@@ -174,23 +174,22 @@ $(document).ready(function () {
             //We create recipeFullDiv element and modify it with the data from callback for specific recipe user clicked on.
             var recipeFullDiv = $('<div>');
             recipeFullDiv.attr('class', 'recipeFullCard');
-            recipeFullDiv.append(`<img class='recipeImgFullCard' src=${callback.meals[0].strMealThumb}>`);
-            recipeFullDiv.append(`<h3 class='recipeNameFullCard'>Name: ${callback.meals[0].strMeal}</h3>`);
-            recipeFullDiv.append(`<h4 class='recipeTypeFullCard'>Area: ${callback.meals[0].strArea}</h4>`);
-            recipeFullDiv.append(`<h4 class='recipeCategoryFullCard'>Category: ${callback.meals[0].strCategory}</h4>`);
-            if (callback.meals[0].strIngredient1) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 1: ${callback.meals[0].strMeasure1} ${callback.meals[0].strIngredient1}</h4>`) };
-            if (callback.meals[0].strIngredient2) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 2: ${callback.meals[0].strMeasure2} ${callback.meals[0].strIngredient2}</h4>`) };
-            if (callback.meals[0].strIngredient3) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 3: ${callback.meals[0].strMeasure3} ${callback.meals[0].strIngredient3}</h4>`) };
-            if (callback.meals[0].strIngredient4) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 4: ${callback.meals[0].strMeasure4} ${callback.meals[0].strIngredient4}</h4>`) };
-            if (callback.meals[0].strIngredient5) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 5: ${callback.meals[0].strMeasure5} ${callback.meals[0].strIngredient5}</h4>`) };
-            if (callback.meals[0].strIngredient6) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 6: ${callback.meals[0].strMeasure6} ${callback.meals[0].strIngredient6}</h4>`) };
-            if (callback.meals[0].strIngredient7) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 7: ${callback.meals[0].strMeasure7} ${callback.meals[0].strIngredient7}</h4>`) };
-            if (callback.meals[0].strIngredient8) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 8: ${callback.meals[0].strMeasure8} ${callback.meals[0].strIngredient8}</h4>`) };
-            if (callback.meals[0].strIngredient9) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 9: ${callback.meals[0].strMeasure9} ${callback.meals[0].strIngredient9}</h4>`) };
-            if (callback.meals[0].strIngredient10) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 10: ${callback.meals[0].strMeasure10} ${callback.meals[0].strIngredient10}</h4>`) };
-            if (callback.meals[0].strIngredient11) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 11: ${callback.meals[0].strMeasure11} ${callback.meals[0].strIngredient11}</h4>`) };
-            if (callback.meals[0].strIngredient12) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 12: ${callback.meals[0].strMeasure12} ${callback.meals[0].strIngredient12}</h4>`) };
-            if (callback.meals[0].strIngredient13) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 13: ${callback.meals[0].strMeasure13} ${callback.meals[0].strIngredient13}</h4>`) };
+            recipeFullDiv.append(`<img class='recipeImgFullCard fullCard' src=${callback.meals[0].strMealThumb}>`);
+            recipeFullDiv.append(`<h3 class='recipeNameFullCard'>${callback.meals[0].strMeal}</h3>`);
+            recipeFullDiv.append(`<h3 class='recipeNameFullCard fullCard'>Ingredients: </h3>`);
+            if (callback.meals[0].strIngredient1) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure1} ${callback.meals[0].strIngredient1}</h4>`) };
+            if (callback.meals[0].strIngredient2) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure2} ${callback.meals[0].strIngredient2}</h4>`) };
+            if (callback.meals[0].strIngredient3) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure3} ${callback.meals[0].strIngredient3}</h4>`) };
+            if (callback.meals[0].strIngredient4) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure4} ${callback.meals[0].strIngredient4}</h4>`) };
+            if (callback.meals[0].strIngredient5) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure5} ${callback.meals[0].strIngredient5}</h4>`) };
+            if (callback.meals[0].strIngredient6) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure6} ${callback.meals[0].strIngredient6}</h4>`) };
+            if (callback.meals[0].strIngredient7) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure7} ${callback.meals[0].strIngredient7}</h4>`) };
+            if (callback.meals[0].strIngredient8) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure8} ${callback.meals[0].strIngredient8}</h4>`) };
+            if (callback.meals[0].strIngredient9) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure9} ${callback.meals[0].strIngredient9}</h4>`) };
+            if (callback.meals[0].strIngredient10) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure10} ${callback.meals[0].strIngredient10}</h4>`) };
+            if (callback.meals[0].strIngredient11) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure11} ${callback.meals[0].strIngredient11}</h4>`) };
+            if (callback.meals[0].strIngredient12) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure12} ${callback.meals[0].strIngredient12}</h4>`) };
+            if (callback.meals[0].strIngredient13) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure13} ${callback.meals[0].strIngredient13}</h4>`) };
             recipeFullDiv.append(`<h4 class='instructionsFullCard'>Instructions: ${callback.meals[0].strInstructions}</h4>`);
             //we append that recipeFullDiv variable to display div.
             $('#display').append(recipeFullDiv)
@@ -348,7 +347,7 @@ function loadAgePage() {
 };
 
 function ageDenied() {
-    //Our age dinied function. We clear the display and load new elements for age denied menu.
+    //Our age denied function. We clear the display and load new elements for age denied menu.
     $('#display').html('');
     $('#display').append(`<div class="wrapper-body box">
 
@@ -392,14 +391,15 @@ function agePage() {
 };
 function random() {
     //our random function to get a random cocktail.
+    $('#display').html('');
     var call = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
     $.ajax({
         url: call,
         method: 'GET'
     }).then(function (callback) {
-        for (var i = 0; i < callback.drinks.length; i++) {
-            var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[i].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[i].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[i].strDrinkThumb}></div>`
+        
+            var cocktailDiv = `<div class='cocktailCard' data-id=${callback.drinks[0].idDrink}><h5 class='cocktailNameCard'>${callback.drinks[0].strDrink}</h5> <img class='cocktailImgCard' src=${callback.drinks[0].strDrinkThumb}></div>`
             $('#display').append(cocktailDiv);
-        }
+        
     })
 }
