@@ -170,3 +170,11 @@ footer {
     text-align: center;
     display: inline-block;
 }
+
+#ageUnder {
+    color: #b30000;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Black Han Sans', sans-serif;
+
+}
