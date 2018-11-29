@@ -6,7 +6,7 @@ $(document).ready(function () {
         loadFoodMenu();
     })
     $(document.body).on('click', '#getCocktailMenu', function () {
-        //We chech if age verification is passed(we store that value in local storage). If no, we call loadAgePage function that changes our display div.
+        //We check if age verification is passed(we store that value in local storage). If no, we call loadAgePage function that changes our display div.
         if (localStorage.ageVerification != "passed") {
             loadAgePage();
         } else {
