@@ -9,13 +9,13 @@ TheMealDB.com - https://www.themealdb.com/api.php
 
 The Food & Cocktail search application gives users the opportunity to search for food recipes via Main Ingredient, Category or Cuisine.  The application will provide user with easy to follow recipes.
 
-![Image description](foodapp.jpg)
+![Image description](images/foodapp.jpg)
 
 Another feature of the application, for those users 21 years of age or older, is the Cocktail Search.  The users will have the opportunity to search for a favorite cocktail by alcohol type or by cocktail name.  The same as the food option, users will receive a set of cocktail recipes to choose from.
 
-![Image description](foodsect.jpg)
+![Image description](images/foodsect.jpg)
 
-![Image description](alcoholsect.jpg)
+![Image description](images/alcoholsect.jpg)
 
 Vanilla JS - lazyload
 Lazy Load delays loading of images in long web pages. Images outside of viewport will not be loaded before user scrolls to them. This is opposite of image preloading.
