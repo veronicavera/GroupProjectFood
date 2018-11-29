@@ -1,39 +1,39 @@
-$(document).ready(function () {
     //When the page is loaded, call function loadMainMenu that loads our display div.
+$(document).ready(function () {
     loadMainMenu();
+    //If user clicks on food menu, we call loadFoodMenu function that changes our display div.
     $(document.body).on('click', '#getFoodMenu', function () {
-        //If user clicks on food menu, we call loadFoodMenu function that changes our display div.
         loadFoodMenu();
     })
+    //We check if age verification is passed(we store that value in local storage). If no, we call loadAgePage function that changes our display div.
     $(document.body).on('click', '#getCocktailMenu', function () {
-        //We check if age verification is passed(we store that value in local storage). If no, we call loadAgePage function that changes our display div.
         if (localStorage.ageVerification != "passed") {
             loadAgePage();
-        } else {
-            //If age verification is passed, we call loadCocktailMenu function that changes our display div.
+        //If age verification is passed, we call loadCocktailMenu function that changes our display div.
+        } else { 
             loadCocktailMenu();
         };
     });
+     //If user clicks on home button, we call loadMainMenu function that loads our strarting display div.
     $(document.body).on('click', '#goHome', function () {
-        //If user clicks on home button, we call loadMainMenu function that loads our strarting display div.
         loadMainMenu();
     })
+    //If user clicks on food menu button we call loadFoodMenu function that changes our display div.
     $(document.body).on('click', '#goFoodMenu', function () {
-        //If user clicks on food menu button we call loadFoodMenu function that changes our display div.
         loadFoodMenu();
     })
+    //If our user clicks on cocktail menu button we check age verificaion.
     $(document.body).on('click', '#goCocktailMenu', function () {
-        //If our user clicks on cocktail menu button we check age verificaion.
+        //If age verification is not passed yet, we call loadAgePage function that changes our div.
         if (localStorage.ageVerification != "passed") {
-            //If age verification is not passed yet, we call loadAgePage function that changes our div.
             loadAgePage();
+        //If age verification is passed we call loadCocktailMenu function that changes our display div.
         } else {
-            //If age verification is passed we call loadCocktailMenu function that changes our display div.
             loadCocktailMenu();
         };
     });
+    //On the cocktail page if user pushed button serch cocktail by type, we check if he changed the value of select.
     $(document.body).on('click', '#cocktailSearchByType', function () {
-        //On the cocktail page if user pushed button serch cocktail by type, we check if he changed the value of select.
         if ($('#alcoholChoice').val() !== 'Select') {
             //If user selected random we load our random function that gives us a random cocktail.
             if ($('#alcoholChoice').val() == 'Random') { random(); }
@@ -57,8 +57,8 @@ $(document).ready(function () {
             });
         }
     })
+    //On the cocktail page if user pushed button serch cocktail by name we grab the value of input and modify our call.
     $(document.body).on('click', '#cocktailSearchByName', function () {
-        //On the cocktail page if user pushed button serch cocktail by name we grab the value of input and modify our call.
         var call = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + $('#cocktailNameInput').val();
         //Clearing the display.
         $('#display').html('');
@@ -76,8 +76,8 @@ $(document).ready(function () {
             }
         })
     })
+    //When user clicks on a cocktail card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
     $(document.body).on('click', '.cocktailCard', function () {
-        //When user clicks on a cocktail card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
         var call = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + $(this).attr('data-id');
         //Emptyind the display.
         $('#display').html('');
@@ -105,8 +105,8 @@ $(document).ready(function () {
             $('#display').append(cocktailFullDiv)
         });
     })
+    //If user clicked on search by main ingredient button we grab the value form input and modify our call.
     $(document.body).on('click', '#searchByMainIngredient', function () {
-        //If users clicked on search by main ingredient button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=' + $('#mainIngredientChoice').val();
         //Clearing the display.
         $('#display').html('');
@@ -124,8 +124,8 @@ $(document).ready(function () {
             }
         })
     })
+    //If users clicked on search by category button we grab the value form input and modify our call.
     $(document.body).on('click', '#searchByCategory', function () {
-        //If users clicked on search by category button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + $('#categoryChoice').val();
         //Clearing the display.
         $('#display').html('');
@@ -143,8 +143,8 @@ $(document).ready(function () {
             }
         })
     })
+    //If users clicked on search by cuisine button we grab the value form input and modify our call.
     $(document.body).on('click', '#searchByCuisine', function () {
-        //If users clicked on search by cuisine button we grab the value form input and modify our call.
         var call = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=' + $('#cuisineChoice').val();
         //Clearing the display.
         $('#display').html('');
@@ -162,8 +162,8 @@ $(document).ready(function () {
             }
         })
     })
+    //When user clicks on a recipe card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
     $(document.body).on('click', '.recipeCard', function () {
-        //When user clicks on a recipe card we grab the values of data id of this card and modify our call to get the data for this specific cocktail.
         var call = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + $(this).attr('data-id');
         //Emptyind the display.
         $('#display').html('');
@@ -198,8 +198,8 @@ $(document).ready(function () {
     })
 
 })
+//Our loadMainMenu function. We clear the display and append new elements for main menu.
 function loadMainMenu() {
-    //Our loadMainMenu function. We clear the display and append new elements for main menu.
     $('#display').html('');
     $('#display').append(`
         <div class="card-group">
@@ -218,8 +218,8 @@ function loadMainMenu() {
     </div>
     `);
 }
+//Our loadFoodMenu function. We clear the display and load new elements for food menu.
 function loadFoodMenu() {
-    //Our loadFoodMenu function. We clear the display and load new elements for food menu.
     $('#display').html('');
     $('#display').append(`<div class="card-group">
         <div class="card foodCard" style="width: 18rem;">
@@ -293,8 +293,8 @@ function loadFoodMenu() {
     </div>
     `)
 };
+//Our loadCocktailMenu function. We clear the display and load new elements for our cocktail menu.
 function loadCocktailMenu() {
-    //Our loadCocktailMenu function. We clear the display and load new elements for our cocktail menu.
     $('#display').html('');
     $('#display').append(`<div class="card-group">
         <div class="card" style="width: 18rem;">
@@ -327,9 +327,8 @@ function loadCocktailMenu() {
     </div>
     `)
 };
-
+//Our load age page function. We clear the display and load new elements.
 function loadAgePage() {
-    //Our load age page function. We clear the display and load new elements
     $('#display').html('');
     $('#display').append(`<div class="wrapper-body box">
 
@@ -345,11 +344,10 @@ function loadAgePage() {
     </div>
 </div>`);
 };
-
+//our valid age function. It clears the display and loads new elements.
 function validAge() {
     $('#display').html('');
     $('#display').append(`<div class="wrapper-body box">
-
     <div class="age">
         <p id="validText">Please enter a valid birthdate.</p>
         <input class="form-control" id="dobMonth" maxlength="2" pattern="[0-9]*" placeholder="MM">
@@ -362,9 +360,8 @@ function validAge() {
     </div>
 </div>`);
 }
-
+//Our age dinied function. We clear the display and load new elements for age denied menu.
 function ageDenied() {
-    //Our age dinied function. We clear the display and load new elements for age denied menu.
     $('#display').html('');
     $('#display').append(`<div class="wrapper-body box">
 
@@ -378,22 +375,19 @@ function ageDenied() {
     });
 }
 
-//our age page function.
+//our age page function. it grabs the values of dates user entered and checks if user is over 21. if yes, it loads ageDenied function, if no it loads loadCocktailMenu function and stores age verification variable as passed.
 $(document).on('click', '#ageEnter', function () {
     var month = $("#dobMonth").val();
     var day = $("#dobDay").val();
     var year = $("#dobYear").val();
     var age = 21;
     var mydate = new Date();
-    console.log(mydate);
 
     mydate.setFullYear(year, month - 1, day);
-    console.log(mydate);
 
     var currdate = new Date();
 
     currdate.setFullYear(currdate.getFullYear() - age);
-    console.log(currdate);
 
     if (month == "" || isNaN(month) || day == "" || isNaN(day) || year == "" || isNaN(year)) {
         validAge();
@@ -405,9 +399,8 @@ $(document).on('click', '#ageEnter', function () {
 
     };
 });
-
+//Our random function to get a random cocktail.
 function random() {
-    //our random function to get a random cocktail.
     var call = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
     $.ajax({
         url: call,
