@@ -59,7 +59,6 @@ $(document).ready(function () {
         }
     })
     $(document.body).on('click', '#cocktailSearchByName', function () {
-//On the cocktail page if user pushed button serch cocktail by name we grab the value of input and modify our call.        var call = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + $('#cocktailNameInput').val();
         //Clearing the display.
         $('#display').html('');
         //Our AJAX call.
