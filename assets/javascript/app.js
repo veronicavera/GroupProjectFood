@@ -388,12 +388,12 @@ function loadCocktailMenu() {
                 <p class="card-text">Choose an alcohol option from the list below.</p>
                 <select class="form-control form-control-lg" id='alcoholChoice'>
                     <option>— Select —</option>
-                    <option>Gin</option>
-                    <option>Whiskey</option>
-                    <option>Vodka</option>
-                    <option>Tequila</option>
-                    <option>Rum</option>
                     <option>Random</option>
+                    <option>Gin</option>
+                    <option>Rum</option>
+                    <option>Tequila</option>
+                    <option>Vodka</option>
+                    <option>Whiskey</option>
                 </select>
                 <button class="btn-primary" id="cocktailSearchByType">Search For Your Next Cocktail</button>
             </div>
