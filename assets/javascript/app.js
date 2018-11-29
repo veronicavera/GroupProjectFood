@@ -204,13 +204,13 @@ function loadMainMenu() {
     $('#display').append(`
         <div class="card-group">
         <div class="card" id='getFoodMenu'>
-          <img class="card-img-top mainPageImages" src="images/Brunch & Specials-4.jpg" alt="Card image cap">
+          <img class="card-img-top mainPageImages" src="assets/images/Brunch & Specials-4.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title main-links">— Food Menu —</h5>
           </div>
         </div>
         <div class="card" id='getCocktailMenu'>
-          <img class="card-img-top mainPageImages" src="images/Monnie Burkes-8.jpg" alt="Card image cap">
+          <img class="card-img-top mainPageImages" src="assets/images/Monnie Burkes-8.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title main-links">— Cocktail Menu —</h5>
           </div>
@@ -223,7 +223,7 @@ function loadFoodMenu() {
     $('#display').html('');
     $('#display').append(`<div class="card-group">
         <div class="card foodCard" style="width: 18rem;">
-            <img class="card-img-top" src="images/Mussels.jpg" alt="Card image cap" width="100%">
+            <img class="card-img-top" src="assets/images/Mussels.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
                 <h5 class="card-title">Main Ingredient</h5>
                 <p class="card-text">Find recipes by main ingredient</p>
@@ -234,7 +234,7 @@ function loadFoodMenu() {
             </div>
         </div>
         <div class="card foodCard" style="width: 18rem;">
-            <img class="card-img-top" src="images/veggies.jpg" alt="Card image cap" width="100%">
+            <img class="card-img-top" src="assets/images/veggies.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
                 <h5 class="card-title">Find recipes by category</h5>
                 <p class="card-text">Choose a category from the list below.</p>
@@ -259,7 +259,7 @@ function loadFoodMenu() {
             </div>
         </div>
         <div class="card foodCard" style="width: 18rem;">
-            <img class="card-img-top" src="images/Carb.jpg" alt="Card image cap" width="100%">
+            <img class="card-img-top" src="assets/images/Carb.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
                 <h5 class="card-title">Cuisine</h5>
                 <p class="card-text">Choose a cuisine from the list below.</p>
@@ -298,7 +298,7 @@ function loadCocktailMenu() {
     $('#display').html('');
     $('#display').append(`<div class="card-group">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="images/drinks2.jpg" alt="Card image cap" width="100%">
+            <img class="card-img-top" src="assets/images/drinks2.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
                 <h5 class="card-title">Cocktails by Alcohol Type</h5>
                 <p class="card-text">Choose an alcohol option from the list below.</p>
@@ -311,16 +311,16 @@ function loadCocktailMenu() {
                     <option>Vodka</option>
                     <option>Whiskey</option>
                 </select>
-                <button class="btn-primary" id="cocktailSearchByType">Search For Your Next Cocktail</button>
+                <button id="cocktailSearchByType">Search For Your Next Cocktail</button>
             </div>
         </div>
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="images/drinks.jpg" alt="Card image cap" width="100%">
+            <img class="card-img-top" src="assets/images/drinks.jpg" alt="Card image cap" width="100%">
             <div class="card-body">
                 <h5 class="card-title">Cocktails by Name</h5>
                 <p class="card-text">Search below for cocktails by name.</p>
                 <input class="form-control" id="cocktailNameInput">
-                <button class = "btn-primary" id="cocktailSearchByName">Search For Your Next Cocktail</button>
+                <button id="cocktailSearchByName">Search For Your Next Cocktail</button>
             </div>
         </div>
     </div>
