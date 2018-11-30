@@ -90,7 +90,6 @@ a:hover {
 .recipeImgCard, .cocktailImgCard {
    height: 300px;
    width: 300px;
-   float: left;
    border-radius: 2px;
 }
 .recipeImgCard:hover, .cocktailImgCard:hover {
@@ -113,14 +112,14 @@ float: left;
 height: 600px;
 width: 600px;
 margin: auto;
-margin-bottom: 10px;
+margin-bottom: 20px;
 }
 .cocktailImgFullCard {
     float: left;
     height: 500px;
     width: 500px;
     margin: auto; 
-    margin-bottom: 10px;  
+    margin-bottom: 20px;  
 }
 .instructionsFullCard, .cocktailinstructionsFullCard{
     text-align: center;
@@ -131,6 +130,7 @@ margin-bottom: 10px;
     border-width:3px;  
     border-style:solid;
     border-color: #1a1a1a;
+    margin-bottom: 20px;
 }
 
 footer {
