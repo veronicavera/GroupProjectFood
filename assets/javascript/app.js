@@ -90,7 +90,7 @@ $(document).ready(function () {
             cocktailFullDiv.attr('class', 'cocktailFullCard');
             cocktailFullDiv.append(`<img class='cocktailImgFullCard' src=${callback.drinks[0].strDrinkThumb}>`);
             cocktailFullDiv.append(`<h3 class='fullCard cocktailNameFullCard'>${callback.drinks[0].strDrink}</h3>`);
-            cocktailFullDiv.append(`<h4 class='fullCard cocktailGlassFullCard '>Instructions :</h4>`);
+            cocktailFullDiv.append(`<h4 class='fullCard cocktailGlassFullCard '>Ingredients :</h4>`);
             if (callback.drinks[0].strIngredient1) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure1} ${callback.drinks[0].strIngredient1}</h4>`) };
             if (callback.drinks[0].strIngredient2) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure2} ${callback.drinks[0].strIngredient2}</h4>`) };
             if (callback.drinks[0].strIngredient3) { cocktailFullDiv.append(`<h4 class='ingredientFullCard'>${callback.drinks[0].strMeasure3} ${callback.drinks[0].strIngredient3}</h4>`) };
@@ -174,7 +174,7 @@ $(document).ready(function () {
             recipeFullDiv.attr('class', 'recipeFullCard');
             recipeFullDiv.append(`<img class='recipeImgFullCard' src=${callback.meals[0].strMealThumb}>`);
             recipeFullDiv.append(`<h3 class='fullCard recipeNameFullCard'>${callback.meals[0].strMeal}</h3>`);
-            recipeFullDiv.append(`<h3 class="fullCard">Instructions :</h3>`);
+            recipeFullDiv.append(`<h3 class="fullCard">Ingredients :</h3>`);
             if (callback.meals[0].strIngredient1) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure1} ${callback.meals[0].strIngredient1}</h4>`) };
             if (callback.meals[0].strIngredient2) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure2} ${callback.meals[0].strIngredient2}</h4>`) };
             if (callback.meals[0].strIngredient3) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure3} ${callback.meals[0].strIngredient3}</h4>`) };
