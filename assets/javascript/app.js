@@ -175,19 +175,19 @@ $(document).ready(function () {
             recipeFullDiv.append(`<img class='recipeImgFullCard' src=${callback.meals[0].strMealThumb}>`);
             recipeFullDiv.append(`<h3 class='fullCard recipeNameFullCard'>${callback.meals[0].strMeal}</h3>`);
             recipeFullDiv.append(`<h3 class="fullCard">Instructions :</h3>`);
-            if (callback.meals[0].strIngredient1) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 1: ${callback.meals[0].strMeasure1} ${callback.meals[0].strIngredient1}</h4>`) };
-            if (callback.meals[0].strIngredient2) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 2: ${callback.meals[0].strMeasure2} ${callback.meals[0].strIngredient2}</h4>`) };
-            if (callback.meals[0].strIngredient3) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 3: ${callback.meals[0].strMeasure3} ${callback.meals[0].strIngredient3}</h4>`) };
-            if (callback.meals[0].strIngredient4) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 4: ${callback.meals[0].strMeasure4} ${callback.meals[0].strIngredient4}</h4>`) };
-            if (callback.meals[0].strIngredient5) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 5: ${callback.meals[0].strMeasure5} ${callback.meals[0].strIngredient5}</h4>`) };
-            if (callback.meals[0].strIngredient6) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 6: ${callback.meals[0].strMeasure6} ${callback.meals[0].strIngredient6}</h4>`) };
-            if (callback.meals[0].strIngredient7) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 7: ${callback.meals[0].strMeasure7} ${callback.meals[0].strIngredient7}</h4>`) };
-            if (callback.meals[0].strIngredient8) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 8: ${callback.meals[0].strMeasure8} ${callback.meals[0].strIngredient8}</h4>`) };
-            if (callback.meals[0].strIngredient9) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 9: ${callback.meals[0].strMeasure9} ${callback.meals[0].strIngredient9}</h4>`) };
-            if (callback.meals[0].strIngredient10) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 10: ${callback.meals[0].strMeasure10} ${callback.meals[0].strIngredient10}</h4>`) };
-            if (callback.meals[0].strIngredient11) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 11: ${callback.meals[0].strMeasure11} ${callback.meals[0].strIngredient11}</h4>`) };
-            if (callback.meals[0].strIngredient12) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 12: ${callback.meals[0].strMeasure12} ${callback.meals[0].strIngredient12}</h4>`) };
-            if (callback.meals[0].strIngredient13) { recipeFullDiv.append(`<h4 class='ingredientFullCard'> Ingredient 13: ${callback.meals[0].strMeasure13} ${callback.meals[0].strIngredient13}</h4>`) };
+            if (callback.meals[0].strIngredient1) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure1} ${callback.meals[0].strIngredient1}</h4>`) };
+            if (callback.meals[0].strIngredient2) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure2} ${callback.meals[0].strIngredient2}</h4>`) };
+            if (callback.meals[0].strIngredient3) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure3} ${callback.meals[0].strIngredient3}</h4>`) };
+            if (callback.meals[0].strIngredient4) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure4} ${callback.meals[0].strIngredient4}</h4>`) };
+            if (callback.meals[0].strIngredient5) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure5} ${callback.meals[0].strIngredient5}</h4>`) };
+            if (callback.meals[0].strIngredient6) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure6} ${callback.meals[0].strIngredient6}</h4>`) };
+            if (callback.meals[0].strIngredient7) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure7} ${callback.meals[0].strIngredient7}</h4>`) };
+            if (callback.meals[0].strIngredient8) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure8} ${callback.meals[0].strIngredient8}</h4>`) };
+            if (callback.meals[0].strIngredient9) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure9} ${callback.meals[0].strIngredient9}</h4>`) };
+            if (callback.meals[0].strIngredient10) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure10} ${callback.meals[0].strIngredient10}</h4>`) };
+            if (callback.meals[0].strIngredient11) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure11} ${callback.meals[0].strIngredient11}</h4>`) };
+            if (callback.meals[0].strIngredient12) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure12} ${callback.meals[0].strIngredient12}</h4>`) };
+            if (callback.meals[0].strIngredient13) { recipeFullDiv.append(`<h4 class='ingredientFullCard'>${callback.meals[0].strMeasure13} ${callback.meals[0].strIngredient13}</h4>`) };
             recipeFullDiv.append(`<h4 class='instructionsFullCard'>Instructions: ${callback.meals[0].strInstructions}</h4>`);
             //we append that recipeFullDiv variable to display div.
             $('#display').append(recipeFullDiv)
