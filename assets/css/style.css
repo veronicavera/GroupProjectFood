@@ -109,15 +109,15 @@ div {
 }
 .recipeImgFullCard{
 float: left;
-height: 600px;
-width: 600px;
+height: 50%;
+width: 50%;
 margin: auto;
 margin-bottom: 20px;
 }
 .cocktailImgFullCard {
     float: left;
-    height: 500px;
-    width: 500px;
+    height: 50%;
+    width: 50%;
     margin: auto; 
     margin-bottom: 20px;  
 }
